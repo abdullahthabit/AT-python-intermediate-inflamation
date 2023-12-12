@@ -72,3 +72,14 @@ def test_daily_max(test, expected):
 
     from inflammation.models import daily_max
     npt.assert_array_equal(daily_max(np.array(test)), np.array(expected))
+
+@pytest.mark.parametrize("test, expected",
+                         [
+                             ([[0, 0], [0, 0], [0, 0]], [0, 0]),
+                             ([[-1, -1], [-1, -1], [-1, -1]], [0, 0])
+                         ])
+def test_daily_std(test, expected):
+    "Test max function for arrays of negative and positive values"
+
+    from inflammation.models import daily_std
+    npt.assert_array_equal(daily_std(np.array(test)), np.array(expected))
